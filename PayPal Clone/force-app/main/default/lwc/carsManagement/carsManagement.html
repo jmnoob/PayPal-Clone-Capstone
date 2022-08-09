@@ -1,0 +1,56 @@
+<template>
+ <lightning-card>
+    <lightning-tabset>
+        <template if:true={isSA}>
+            <lightning-tab label="Create Car Models">
+                <lightning-record-form
+                object-api-name="Car_Model__c"
+                columns="2"
+                layout-type="Full"
+                ></lightning-record-form>
+            </lightning-tab>
+        </template>
+        <template if:true={isSA}>
+            <lightning-tab label="Update Car Models">
+                <lightning-record-edit-form
+                    object-api-name="Car_Model__c"
+                    record-id={recordsIds}
+                    onsuccess={handleSuccess}>
+                    <lightning-input-field field-name={carPN}>
+                    </lightning-input-field>
+                    <lightning-input-field field-name={carModel}>
+                    </lightning-input-field>
+                    <lightning-input-field field-name={car}>
+                    </lightning-input-field>
+                    <lightning-input-field field-name={carStage}>
+                    </lightning-input-field>
+                    <lightning-input-field field-name={color}>
+                    </lightning-input-field>
+                    <lightning-button variant="brand" type="submit" name="save" label="Save"></lightning-button>
+                </lightning-record-edit-form>
+            </lightning-tab>
+        </template>
+        <template if:false={isSA}>
+            <lightning-tab label="Create Account">
+                <lightning-record-form
+                object-api-name="Account"
+                columns="2"
+                layout-type="Full"
+                ></lightning-record-form>
+            </lightning-tab>
+        </template>
+    </lightning-tabset>
+    <br>
+    <template if:true={isSE}>
+        <lightning-card title="Records">
+            <!-- //<lightning-button label="Get Data" onclick={getRecent}></lightning-button> -->
+            <lightning-datatable 
+                key-field="id"
+                data={result}
+                columns={carCols}>
+            </lightning-datatable>
+        </lightning-card>
+    </template>
+ </lightning-card>
+
+</template>

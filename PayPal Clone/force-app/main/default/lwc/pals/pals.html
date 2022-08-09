@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Pals" style="margin: 50px 20px 10px 20px">
+        <lightning-tabset>
+            <lightning-tab label="Search Pal" style="margin: 50px 20px 10px 20px">
+                <lightning-input type="text" label="Pal Name:" onkeyup={setName}></lightning-input>
+                <br>
+                <lightning-datatable
+                    hide-checkbox-column="true"
+                    key-field="id"
+                    data={result}
+                    columns={coloumns}
+                    onrowaction={handleRowAction}            
+                ></lightning-datatable>
+                <br>
+            </lightning-tab>
+            <lightning-tab label="Add Pals" style="margin: 50px 20px 10px 20px">
+                <lightning-record-form
+                    object-api-name="Pals__c"
+                    columns="2"
+                    layout-type="Full"
+                    ></lightning-record-form>
+            </lightning-tab>
+        </lightning-tabset>
+    </lightning-card>
+    <c-sendmoney></c-sendmoney>
+</template>
