@@ -1,0 +1,25 @@
+<template>
+    <template if:true={isUser}>
+        <lightning-card>
+            <lightning-datatable 
+                data={bills.data} 
+                columns={columns} 
+                key-field="id" 
+                hide-checkbox-column="true"  
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </lightning-card>
+    </template>
+    <template if:true={isAdmin}>
+        <lightning-card>
+            <lightning-datatable 
+                data={admData} 
+                columns={s} 
+                key-field="id" 
+                hide-checkbox-column="true"  
+                onrowaction={handleCancelAction}>
+            </lightning-datatable>
+        </lightning-card>
+    </template>
+    <c-payment></c-payment>
+</template>
